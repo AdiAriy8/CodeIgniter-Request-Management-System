@@ -145,11 +145,11 @@ class Panel extends CI_Controller
     }
 
     function countStatus($status, $data){
-        try{
-            $ret = number_format((float)(($this->Model_Panel->CountStatus($status, $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-        }catch(Exception $e){
-            $ret = 0;
+        $count = $this->Model_Panel->CountStatus($status, $data['sess']);
+        if($count < 1 || $data['c_trx'] < 1){
+            return 0;
         }
+        $ret = number_format((float)(($count / $data['c_trx']) * 100), 2, '.', '');
         return $ret;
     }
 }
