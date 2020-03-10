@@ -46,11 +46,11 @@ class Panel extends CI_Controller
             $data['c_trx'] = $this->Model_Panel->Count('request');
 
             // count request
-            $data['New'] = number_format((float)(($this->Model_Panel->CountStatus('New', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Send'] = number_format((float)(($this->Model_Panel->CountStatus('Send', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Reject'] = number_format((float)(($this->Model_Panel->CountStatus('Reject', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Received'] = number_format((float)(($this->Model_Panel->CountStatus('Received', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Process'] = number_format((float)(($this->Model_Panel->CountStatus('Process', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
+            $data['New'] = $this->countStatus('New', $data);
+            $data['Send'] = $this->countStatus('Send', $data);
+            $data['Reject'] = $this->countStatus('Reject', $data);
+            $data['Received'] = $this->countStatus('Received', $data);
+            $data['Process'] = $this->countStatus('Process', $data);
             $this->load_page($data);
         } else {
             $this->session->unset_userdata('user');
@@ -71,11 +71,11 @@ class Panel extends CI_Controller
         $data['c_trx'] = $this->Model_Panel->Count('requestStaff');
 
         // count request
-        $data['New'] = number_format((float)(($this->Model_Panel->CountStatus('New', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Send'] = number_format((float)(($this->Model_Panel->CountStatus('Send', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Reject'] = number_format((float)(($this->Model_Panel->CountStatus('Reject', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Received'] = number_format((float)(($this->Model_Panel->CountStatus('Received', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Process'] = number_format((float)(($this->Model_Panel->CountStatus('Process', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
+        $data['New'] = $this->countStatus('New', $data);
+        $data['Send'] = $this->countStatus('Send', $data);
+        $data['Reject'] = $this->countStatus('Reject', $data);
+        $data['Received'] = $this->countStatus('Received', $data);
+        $data['Process'] = $this->countStatus('Process', $data);
         $this->load_page($data);
 
     }
@@ -92,11 +92,11 @@ class Panel extends CI_Controller
         $data['c_trx'] = $this->Model_Panel->Count('requestSupplier');
 
         // count request
-        $data['New'] = number_format((float)(($this->Model_Panel->CountStatus('New', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Send'] = number_format((float)(($this->Model_Panel->CountStatus('Send', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Reject'] = number_format((float)(($this->Model_Panel->CountStatus('Reject', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Received'] = number_format((float)(($this->Model_Panel->CountStatus('Received', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
-            $data['Process'] = number_format((float)(($this->Model_Panel->CountStatus('Process', $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
+        $data['New'] = $this->countStatus('New', $data);
+        $data['Send'] = $this->countStatus('Send', $data);
+        $data['Reject'] = $this->countStatus('Reject', $data);
+        $data['Received'] = $this->countStatus('Received', $data);
+        $data['Process'] = $this->countStatus('Process', $data);
         $this->load_page($data);
 
     }
@@ -140,6 +140,15 @@ class Panel extends CI_Controller
                 }    
             }
             array_push($ret, $swap);
+        }
+        return $ret;
+    }
+
+    function countStatus($status, $data){
+        try{
+            $ret = number_format((float)(($this->Model_Panel->CountStatus($status, $data['sess']) / $data['c_trx']) * 100), 2, '.', '');
+        }catch(Exception $e){
+            $ret = 0;
         }
         return $ret;
     }
