@@ -1,0 +1,74 @@
+CodeIgniter - Inventory ATK
+
+================================================
+
+
+================================================
+
+09032020
+supplier user
+supplier list barang
+supplier - crud barang
+supplier - add cancel order - state new
+supplier - add process order - state new
+supplier - add send order - state process
+
+08032020
+staff - request - multiple supplier
+staff - add cancel order - state new
+staff - add receive order - state send
+supplier login
+supplier dashboard
+
+06032020
+staff - dashboard fixing
+staff - list barang - fixing
+staff - request - fixing list barang
+
+
+05032020
+admin grap trx - bulanan
+admin add budget bulanan
+add animated dashboard
+admin compare budget bulanan
+
+04032020
+admin report - date range
+admin list barang -> view only
+add harga in detail request
+add total in head request
+
+01032020
+add relation barang -> supplier
+edit user : select option group
+fixing detail transaksi
+fixing report detail transaksi
+
+27022020
+admin list transaksi -  remove button crete new
+staff list tranaksi
+
+22022020
+admin detail transaksi -> print
+admin detail transaksi -> download
+admin dashboard - count label
+admin dashboard - progress
+staff login
+staff dashboard
+staff user
+staff list barang
+
+21022020
+admin list transaksi -> split to detail transaksi
+
+19022020
+admin list transaksi -> view
+admin detail transaksi
+
+17022020
+admin list barang -> crud
+
+16022020
+admin login
+admin dashboard
+admin list user -> crud
