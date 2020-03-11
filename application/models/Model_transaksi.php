@@ -160,4 +160,15 @@ class Model_transaksi extends CI_Model
             $this->session->set_flashdata('messages', 'Gagal memperbarui status request');
         }
     }
+
+    public function SendOrder($data){
+        $this->db->insert('kirim', $data);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('status', 'success');
+            $this->session->set_flashdata('messages', 'Berhasil kirim barang');
+        }else{
+            $this->session->set_flashdata('status', 'failser');
+            $this->session->set_flashdata('messages', 'Gagal kirim barang');
+        }
+    }
 }
