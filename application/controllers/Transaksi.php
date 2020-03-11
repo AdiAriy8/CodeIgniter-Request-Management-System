@@ -289,7 +289,7 @@ class Transaksi extends CI_Controller
                     break;
             }
 
-        }else{
+        } else {
             $next_status = $status;
         }
 
@@ -297,15 +297,29 @@ class Transaksi extends CI_Controller
         $data = array(
             'id' => $id,
             'status' => $next_status,
-            'tgl_selesai' => date("Y-m-d"),
         );
+
+        if ($next_status == 'Received') {
+            $data['tgl_selesai'] = date("Y-m-d");
+        }
         $this->Model_transaksi->ChangeStatus($data);
-        if($sess['group'] == 1){
+
+        if ($next_status == 'Send') {
+            // insert data pengiriman
+            $send = array(
+                'id_supplier' => $sess['id'],
+                'id_request' => $id,
+                'tgl_kirim' => date("Y-m-d"),
+            );
+            $this->Model_transaksi->SendOrder($send);
+        }
+
+        if ($sess['group'] == 1) {
             redirect('index.php/Transaksi/staff');
-        }else{
+        } else {
             redirect('index.php/Transaksi/supplier');
         }
-        
+
     }
     // validate status and group type
     public function validateStatus($status)

@@ -30,6 +30,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/tests/
 /tests/results/
 CodeIgniter - Inventory ATK
-db/user.sql
-db/group.sql
-db/db_inventorybukuatk.sql
+db/
