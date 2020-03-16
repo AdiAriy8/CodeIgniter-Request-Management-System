@@ -12,6 +12,15 @@ class Panel extends CI_Controller
 
     public function index()
     {
+        $this->Model_auth->check();
+        $sess = $this->session->userdata('user');
+        redirect('index.php/Panel/'.$sess['group_name']);
+        
+    }
+
+    public function admin()
+    {
+        $this->Model_auth->check();
         $this->getChart('');
     }
 
@@ -103,8 +112,10 @@ class Panel extends CI_Controller
 
     public function load_page($data)
     {
+        $sess = $this->session->userdata('user');
+        
         $this->load->view('head.php');
-        $this->load->view($data['type'].'/index.php', $data);
+        $this->load->view($sess['group_name'].'/index.php', $data);
         $this->load->view('footer.php');
     }
 
