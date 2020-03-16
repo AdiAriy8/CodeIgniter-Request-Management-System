@@ -13,7 +13,7 @@ class Auth extends CI_Controller
                         break;
                     };
                 case 2:{
-                        redirect('index.php/Panel');
+                        redirect('index.php/Panel/admin');
                         break;
                     };
                 case 3:{
