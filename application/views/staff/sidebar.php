@@ -24,7 +24,7 @@
 
 <!-- Nav Item - Charts -->
 <li class="nav-item <?php echo $this->uri->segment(1) == 'User' ? 'active' : ''?>">
-  <a class="nav-link" href="<?php echo base_url()."index.php/User/".$type ?>">
+  <a class="nav-link" href="<?php echo base_url()."index.php/User/setting"?>">
     <i class="fas fa-fw fa-user"></i>
     <span>Users</span></a>
 </li>

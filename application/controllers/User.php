@@ -23,7 +23,7 @@ class User extends CI_Controller
         }
     }
 
-    public function staff()
+    public function setting()
     {
         $this->Model_auth->check();
         $data['sess'] = $this->session->userdata('user');
@@ -31,7 +31,7 @@ class User extends CI_Controller
 
         // get user
         $data['ret'] = $this->Model_user->get($id);
-        $data['content'] = 'staff/user_detail.php';
+        $data['content'] = 'content/user_detail.php';
         $data['pages'] = 'Detail User';
         $this->load_page($data);
     }
