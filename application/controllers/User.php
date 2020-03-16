@@ -172,19 +172,11 @@ class User extends CI_Controller
 
     public function load_page($data)
     {
-        $this->load->view('head.php');
         $sess = $this->session->userdata('user');
+        $data['type'] = $sess['group_name'];
 
-        if (isset($sess)) {
-            if ($sess['group'] == 1) {
-                $data['type'] = "staff";
-            } else if ($sess['group'] == 2) {
-                $data['type'] = "admin";
-            } else if ($sess['group'] == 3) {
-                $data['type'] = "supplier";
-            }
-        }
-        isset($data['type']) ? $this->load->view($data['type'] . '/index.php', $data) : $this->load->view('admin/index.php', $data);
+        $this->load->view('head.php');
+        $this->load->view($sess['group_name'].'/index.php', $data);
         $this->load->view('footer.php');
     }
 
