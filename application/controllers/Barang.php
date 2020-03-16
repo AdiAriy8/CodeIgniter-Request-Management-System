@@ -25,7 +25,7 @@ class Barang extends CI_Controller
         $data['sess'] = $this->session->userdata('user');
         $data['type'] = 'staff';
         $data['value'] = $this->Model_barang->getBarang();
-        $data['content'] = 'admin/barang.php';
+        $data['content'] = 'content/barang.php';
         $data['pages'] = 'Barang';
         $this->load_page($data);
     }
