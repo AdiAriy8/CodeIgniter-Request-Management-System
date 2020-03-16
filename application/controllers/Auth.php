@@ -42,6 +42,7 @@ class Auth extends CI_Controller
             $user['perusahaan'] = $ret->perusahaan;
             $user['email'] = $ret->email;
             $user['group'] = $ret->group;
+            $user['group_name'] = $ret->group_name;
             $user['no_telp'] = $ret->no_telp;
             $this->session->set_userdata('user', $user);
             $this->index();
