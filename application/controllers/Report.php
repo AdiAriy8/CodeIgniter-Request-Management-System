@@ -37,7 +37,7 @@ class Report extends CI_Controller
             $data['title'] = "Laporan Transaksi";
             $data['site_title'] = site_title;
         
-            $this->load->library('pdf');
+            $this->load->library('Pdf');
             $this->pdf->setPaper('A4', 'potrait');
             $this->pdf->filename = "Laporan Transaksi.pdf";
             $this->pdf->load_view('report/generate_laporan', $data);
