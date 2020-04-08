@@ -86,3 +86,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 // Environment
 define('site_title', 'INVENTORY BUKU DAN ATK SMP MUHAMMADIYAH 4 DEPOK');
+define('site_title_short', 'SMP MUHAMMADIYAH 4 DEPOK');

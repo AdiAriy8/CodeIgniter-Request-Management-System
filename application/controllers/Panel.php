@@ -12,6 +12,15 @@ class Panel extends CI_Controller
 
     public function index()
     {
+        $this->Model_auth->check();
+        $sess = $this->session->userdata('user');
+        redirect('index.php/Panel/'.$sess['group_name']);
+        
+    }
+
+    public function admin()
+    {
+        $this->Model_auth->check();
         $this->getChart('');
     }
 
@@ -22,7 +31,6 @@ class Panel extends CI_Controller
         if ($query->num_rows()) {
             $data['content'] = 'admin/main.php';
             $data['sess'] = $this->session->userdata('user');
-            $data['type'] = 'admin';
             
             // validate insert year
             $data['year'] = $year;
@@ -37,7 +45,6 @@ class Panel extends CI_Controller
             /// mapping budget
             $budget = $this->Model_budget->getBudget($data['year']);
             $data['Map_budget_year'] = $this->MappingBudget($budget);
-
 
             // count data
             $data['c_staff'] = $this->Model_Panel->CountStaff(1);
@@ -64,7 +71,6 @@ class Panel extends CI_Controller
         $this->Model_auth->check();
         $data['content'] = 'staff/main.php';
         $data['sess'] = $this->session->userdata('user');
-        $data['type'] = 'staff';
 
         // count data
         $data['c_barang'] = $this->Model_Panel->Count('barang');
@@ -85,7 +91,6 @@ class Panel extends CI_Controller
         $this->Model_auth->check();
         $data['content'] = 'supplier/main.php';
         $data['sess'] = $this->session->userdata('user');
-        $data['type'] = 'supplier';
 
         // count data
         $data['c_barang'] = $this->Model_Panel->Count('barangSupplier');
@@ -103,8 +108,11 @@ class Panel extends CI_Controller
 
     public function load_page($data)
     {
+        $sess = $this->session->userdata('user');
+        $data['type'] = $sess['group_name'];
+
         $this->load->view('head.php');
-        $this->load->view($data['type'].'/index.php', $data);
+        $this->load->view($sess['group_name'].'/index.php', $data);
         $this->load->view('footer.php');
     }
 

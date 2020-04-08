@@ -3,8 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Model_auth extends CI_Model
 {
     public function validate_login($email, $password){
+        $this->db->select('group.name as group_name, user.*');
         $this->db->where('email', $email);
         $this->db->where('password', $password);
+        $this->db->join('group', 'group.id = user.group');
         $query = $this->db->get('user');
         return $query;
     }
