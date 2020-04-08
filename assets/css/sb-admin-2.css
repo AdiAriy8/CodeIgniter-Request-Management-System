@@ -10209,6 +10209,8 @@ a:focus {
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   z-index: 1;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon i {
