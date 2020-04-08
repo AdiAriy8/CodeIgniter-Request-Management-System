@@ -145,7 +145,7 @@ class Model_transaksi extends CI_Model
     }
 
     public function CountYear($year){
-        $query = $this->db->query("SELECT SUM( total ) AS total, MONTH ( tgl_request ) 'bulan', DATE_FORMAT( tgl_request, '%b' ) AS 'bln'  FROM request  WHERE YEAR ( tgl_request ) = ".$year."  GROUP BY YEAR ( tgl_request ), MONTH ( tgl_request )");   
+        $query = $this->db->query("SELECT SUM( total ) AS total, MONTH ( tgl_request ) 'bulan', DATE_FORMAT( tgl_request, '%b' ) AS 'bln'  FROM request  WHERE YEAR ( tgl_request ) = ".$year." AND request.`status` = 'Received' GROUP BY YEAR ( tgl_request ), MONTH ( tgl_request )");   
         return $query;
     }
 

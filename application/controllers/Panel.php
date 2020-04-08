@@ -46,7 +46,6 @@ class Panel extends CI_Controller
             $budget = $this->Model_budget->getBudget($data['year']);
             $data['Map_budget_year'] = $this->MappingBudget($budget);
 
-
             // count data
             $data['c_staff'] = $this->Model_Panel->CountStaff(1);
             $data['c_supplier'] = $this->Model_Panel->CountStaff(3);
