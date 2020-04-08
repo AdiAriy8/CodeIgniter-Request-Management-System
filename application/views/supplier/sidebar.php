@@ -4,10 +4,11 @@
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url()?>">
   <div class="sidebar-brand-icon rotate-n-15">
-    <i class="fas fa-laugh-wink"></i>
+    IATK
   </div>
-  <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+  <div class="sidebar-brand-text mx-3"><?php echo site_title_short ?></div>
 </a>
+
 
 <!-- Divider -->
 <hr class="sidebar-divider my-0">
@@ -24,7 +25,7 @@
 
 <!-- Nav Item - Charts -->
 <li class="nav-item <?php echo $this->uri->segment(1) == 'User' ? 'active' : ''?>">
-  <a class="nav-link" href="<?php echo base_url()."index.php/User/staff" ?>">
+  <a class="nav-link" href="<?php echo base_url()."index.php/User/setting" ?>">
     <i class="fas fa-fw fa-user"></i>
     <span>Users</span></a>
 </li>
